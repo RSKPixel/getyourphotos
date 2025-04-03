@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 const GetYourPhotos = () => {
   const faceImg = useRef(null);
-  const api = "http://localhost:8000/upload";
+  const api = "http://localhost:8000/gyp/upload/";
   const [selectedImage, setSelectedImage] = useState(null);
   const [eventId, setEventId] = useState("E0001");
 
@@ -20,11 +20,11 @@ const GetYourPhotos = () => {
 
   useEffect(() => {
     const formData = new FormData();
-    formData.append("image", selectedImage);
-    formData.append("eventId", eventId);
+    formData.append("file", selectedImage);
+    formData.append("event_id", eventId);
 
     if (selectedImage) {
-      fetch("http://localhost:8000/upload/", {
+      fetch(api, {
         method: "POST",
         body: formData,
         headers: {
@@ -47,6 +47,7 @@ const GetYourPhotos = () => {
       <span className="text-3xl font-bold">GetYourPhotos</span>
       <div className="flex flex-col w-96 p-4 border rounded-lg border-teal-700 bg-teal-700 items-center justify-center mt-4 shadow-xl">
         <input
+          name="file"
           type="file"
           ref={faceImg}
           className="hidden"
