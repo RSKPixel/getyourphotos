@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 const FaceMatch = () => {
     const faceImg = useRef(null);
-    const api = "http://localhost:8000/upload/";
+    const api = "http://localhost:8000/upload";
     const [selectedImage, setSelectedImage] = useState(null);
     const [eventId, setEventId] = useState("E0001");
 
@@ -23,13 +23,16 @@ const FaceMatch = () => {
         formData.append("eventId", eventId);
 
         if (selectedImage) {
-            fetch(api, {
+            fetch("http://localhost:8000/upload/", {
                 method: "POST",
                 body: formData,
+                headers: {
+                    Accept: "application/json", // Ensure JSON response
+                },
             })
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data);
+                    console.log("Success:", data);
                 })
                 .catch((error) => {
                     console.error("Error:", error);
