@@ -1,10 +1,11 @@
 import { useState } from "react";
 import "./App.css";
-import FaceMatch from "./app/FaceMatch";
-function App() {
-    const [events, setEvents] = useState([]);
+import GetYourPhotos from "./app/GetYourPhotos";
 
-    return <FaceMatch />;
+function App() {
+  const [events, setEvents] = useState([]);
+
+  return <GetYourPhotos />;
 }
 
 export default App;
