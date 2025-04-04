@@ -1,2 +1,3 @@
 venv/
 data/media/*
+__pycache__/*
