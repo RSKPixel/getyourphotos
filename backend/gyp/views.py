@@ -60,6 +60,9 @@ def upload(request):
                 match_found = True
 
     if match_found:
+        # remove duplicates
+        matched_filenames = list(set(matched_filenames))
+        matched_files = list(set(matched_files))
         return Response({"status": "success", "message": "Match found!", "matched_files": matched_files})
     else:
         return Response({"status": "error", "message": "No match found!"})

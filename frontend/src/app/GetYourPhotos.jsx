@@ -24,10 +24,10 @@ const GetYourPhotos = () => {
         const formData = new FormData();
         formData.append("file", selectedImage);
         formData.append("event_id", eventId);
-        setFormMessage("Please Wait...");
-        setMatchedImages([]);
 
         if (selectedImage) {
+            setFormMessage("Please Wait...");
+            setMatchedImages([]);
             fetch(`${api}/gyp/upload/`, {
                 method: "POST",
                 body: formData,
@@ -63,7 +63,7 @@ const GetYourPhotos = () => {
             </div>
 
             {matchedImages.length > 0 && (
-                <div className="grid grid-cols-3 items-center justify-center bg-teal-700 border-teal-700  border rounded-2xl shadow-2xl w-full h-fit mt-4 gap-2 p-2">
+                <div className="grid grid-cols-3 items-center justify-center bg-teal-700 border-teal-700  border rounded-2xl shadow-2xl w-full h-fit mt-4 gap-2 p-6">
                     {matchedImages.map((image, index) => (
                         <img key={index} src={`${api}${image}`} className="w-96 border-2 rounded-2xl" />
                     ))}
